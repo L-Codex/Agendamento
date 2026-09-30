@@ -1,0 +1,50 @@
+@model Agendamento.Models.Paciente
+
+@{
+    ViewData["Title"] = "Editar Paciente";
+}
+
+<h4>Editar Paciente</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Editar" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="PacienteId" />
+            <div class="mb-3">
+                <label asp-for="Nome" class="control-label"></label>
+                <input asp-for="Nome" class="form-control" maxlength="100" />
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="CPF" class="control-label"></label>
+                <input asp-for="CPF" class="form-control" maxlength="11" inputmode="numeric" />
+                <small class="form-text text-muted">Informe somente os 11 dígitos, sem pontos ou hífen.</small>
+                <span asp-validation-for="CPF" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Telefone" class="control-label"></label>
+                <input asp-for="Telefone" type="tel" class="form-control" maxlength="14" />
+                <span asp-validation-for="Telefone" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Endereco" class="control-label">Endereço</label>
+                <input asp-for="Endereco" class="form-control" maxlength="100" />
+                <span asp-validation-for="Endereco" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="DataNascimento" class="control-label">Data de Nascimento</label>
+                <input asp-for="DataNascimento" type="date" asp-format="{0:yyyy-MM-dd}" class="form-control" />
+                <span asp-validation-for="DataNascimento" class="text-danger"></span>
+            </div>
+            <div class="mt-3">
+                <input type="submit" value="Salvar" class="btn btn-outline-success" />
+                <a asp-action="Index" class="btn btn-outline-info">Voltar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
